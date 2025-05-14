@@ -1,33 +1,46 @@
 class_name Player extends RigidBody2D
 
 @export var top_speed: float = 50.0
+@export var tilt_strength: float = 1000.0
+@export var walk_strength: float = 500.0
+@export var damp_strength: float = 500.0
+@export var max_slope_angle: float = 45.0
 @export var speed_curve: Curve
 
+@onready var tilt_force_point: Node2D = $TiltForcePoint
+@onready var floor_max_height: Node2D = $FloorCollisionMaxHeight
 var contact_position := Vector2.ZERO
 var contact_normal := Vector2.ZERO
+var axis: float = 0.0
 
 func _ready() -> void:
 	pass
 
 func _physics_process(_delta: float) -> void:
+	axis = Input.get_axis("move_left", "move_right")
 	process_tilt_automove(_delta)
 
 func process_tilt_automove(_delta: float) -> void:
-	#var axis := -Input.get_axis("test_left", "test_right")
-	#apply_torque(-axis * 3000000.0)
-	
-	var angle90 = min(90, abs(rotation_degrees))
-	var speed_factor = speed_curve.sample(angle90)
+	var tilt_force = axis * mass * tilt_strength
+	apply_force(tilt_force * global_transform.x, tilt_force_point.position)
 
 	if is_on_floor():
-		var force: float = 1.0 * mass * 500.0 * speed_factor * signf(rotation_degrees)
+		# Sample the speed for this angle. Higher tilt is higher speed, depends on the curve.
+		var angle90 = clamp(rotation_degrees - contact_normal.angle(), -90, 90)
+		var speed_factor = speed_curve.sample(angle90)
+		var force: float = 1.0 * mass * walk_strength * speed_factor * signf(angle90)
+
+		# Apply walking velocity if not at top speed.
+		if linear_velocity.length() > top_speed:
+			force = 0
 		apply_central_force(contact_normal.rotated(deg_to_rad(90)) * force)
-		pass
+
+		# Apply friction (damping).
+		apply_central_force(-linear_velocity.normalized() * mass * damp_strength)
 
 func process_feet_move(_delta: float) -> void:
-	var axis := -Input.get_axis("test_left", "test_right")
 	if is_on_floor():
-		var force: float = 1.0 * mass * 500.0 * axis
+		var force: float = 1.0 * mass * 500.0 * -axis
 		apply_force(contact_normal.rotated(deg_to_rad(90)) * force, contact_position)
 
 	queue_redraw()
@@ -40,16 +53,16 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	contact_position = Vector2.ZERO
 	for i in range(state.get_contact_count()):
 		var body := state.get_contact_collider_object(i)
-		if body is StaticBody2D:
-			contact_position = to_local(state.get_contact_collider_position(i))
-			contact_normal = state.get_contact_local_normal(i)
+		var normal := state.get_contact_local_normal(i)
+		var point := to_local(state.get_contact_local_position(i))
+
+		if body is StaticBody2D and \
+			normal.angle_to(Vector2.UP) < max_slope_angle \
+			and point.y > floor_max_height.position.y:
+
+			contact_position = point
+			contact_normal = normal
 
 func _draw() -> void:
 	if is_on_floor():
 		draw_circle(contact_position, 10.0, Color.RED, false)
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		apply_torque_impulse(event.relative.x * 2000.0)
-	if event.is_action_pressed("capture"):
-		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED else Input.MOUSE_MODE_VISIBLE

@@ -7,9 +7,11 @@
 friction = 0.0
 
 [sub_resource type="Curve" id="Curve_4dohe"]
-_limits = [0.0, 1.0, 0.0, 90.0]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(16.2329, 1), 0.0, 0.0, 0, 0]
-point_count = 2
+_limits = [-2.23517e-08, 1.0, -90.0, 90.0]
+_data = [Vector2(-90, 1), 0.0, 0.0, 0, 0, Vector2(-14.4, 0.8), -0.00553626, -0.00553626, 0, 0, Vector2(-2.38419e-06, -2.23517e-08), -0.0887805, -0.0887805, 0, 0, Vector2(1.8, -2.23517e-08), 0.0909157, 0.0909157, 0, 0, Vector2(14.4, 0.83), 0.00590623, 0.00590623, 0, 0, Vector2(90, 1), 0.000347632, 0.0, 0, 0]
+point_count = 6
+metadata/_snap_enabled = true
+metadata/_snap_count = 100
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4dohe"]
 radius = 90.0
@@ -21,16 +23,26 @@ mass = 20.0
 physics_material_override = SubResource("PhysicsMaterial_4dohe")
 contact_monitor = true
 max_contacts_reported = 3
+angular_damp = 3.0
 script = ExtResource("1_72ieh")
+top_speed = 350.0
+tilt_strength = 400.0
+walk_strength = 1500.0
 speed_curve = SubResource("Curve_4dohe")
 
 [node name="Baby" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(-1, -1)
+position = Vector2(33, -2)
 scale = Vector2(0.72659, 0.72659)
 texture = ExtResource("2_4dohe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-33, -1)
+position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_4dohe")
 debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="TiltForcePoint" type="Marker2D" parent="."]
+position = Vector2(1, -171)
+
+[node name="FloorCollisionMaxHeight" type="Marker2D" parent="."]
+position = Vector2(83, 132)
