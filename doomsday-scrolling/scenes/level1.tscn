@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dnknx2qvjq3ud"]
+[gd_scene load_steps=6 format=3 uid="uid://dnknx2qvjq3ud"]
 
 [ext_resource type="PackedScene" uid="uid://b0he1fbvpb4md" path="res://prefabs/player.tscn" id="1_g2h75"]
 [ext_resource type="Texture2D" uid="uid://do4jjhx1d3rsu" path="res://assets/background.png" id="1_wwpf4"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3g4x6"]
 distance = 81.0
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_m7ahb"]
+b = Vector2(0, 1089)
 
 [node name="Level1" type="Node2D"]
 
@@ -26,9 +29,15 @@ shape = SubResource("WorldBoundaryShape2D_3g4x6")
 
 [node name="Player" parent="." instance=ExtResource("1_g2h75")]
 position = Vector2(152, 640)
+top_speed = 100.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
 [node name="Ramp" parent="." instance=ExtResource("3_m7ahb")]
 position = Vector2(752, 864)
+
+[node name="BackWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackWall"]
+shape = SubResource("SegmentShape2D_m7ahb")
