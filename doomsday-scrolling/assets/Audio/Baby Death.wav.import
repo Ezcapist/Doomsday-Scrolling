@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bg4ti33jppoxo"
+path="res://.godot/imported/Baby Death.wav-398a97698416f0544c964476c9269368.sample"
+
+[deps]
+
+source_file="res://assets/Audio/Baby Death.wav"
+dest_files=["res://.godot/imported/Baby Death.wav-398a97698416f0544c964476c9269368.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

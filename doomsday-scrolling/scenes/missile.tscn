@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsdsxgrkxn753"]
+
+[ext_resource type="Script" uid="uid://8xbghuh74mxm" path="res://scripts/missile.gd" id="1_6cx5e"]
+[ext_resource type="Texture2D" uid="uid://ot8km2cicdnd" path="res://assets/Test Art/meteor loose.png" id="2_35udt"]
+[ext_resource type="AudioStream" uid="uid://bqn5bwd372ls0" path="res://assets/Audio/Missile Sound.wav" id="3_35udt"]
+[ext_resource type="AudioStream" uid="uid://bg4ti33jppoxo" path="res://assets/Audio/Baby Death.wav" id="4_bd00w"]
+[ext_resource type="AudioStream" uid="uid://mwuni4hx1u0a" path="res://assets/Audio/Explosion.wav" id="5_flxc2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2swxv"]
+radius = 44.0
+height = 224.0
+
+[node name="Missile" type="Area2D"]
+scale = Vector2(1.49065, 1.49065)
+collision_layer = 2
+script = ExtResource("1_6cx5e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.366, 0.366)
+texture = ExtResource("2_35udt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.35424, 135.511)
+shape = SubResource("CapsuleShape2D_2swxv")
+
+[node name="MissileSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_35udt")
+volume_db = 2.0
+autoplay = true
+max_distance = 600.0
+
+[node name="BabyDeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_bd00w")
+
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_flxc2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bay6j0kot0taw"]
+
+[ext_resource type="Texture2D" uid="uid://dwfamq7jemvq1" path="res://assets/Test Art/explosionimage.png" id="1_17npe"]
+
+[node name="Sprite2D" type="Sprite2D"]
+scale = Vector2(1.125, 1.125)
+texture = ExtResource("1_17npe")
