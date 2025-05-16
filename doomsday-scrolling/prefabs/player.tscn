@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b0he1fbvpb4md"]
 
 [ext_resource type="Script" uid="uid://bkks7lpbqlhsy" path="res://scripts/player.gd" id="1_72ieh"]
-[ext_resource type="Texture2D" uid="uid://cb41nrwuuuo0l" path="res://assets/baby.png" id="2_4dohe"]
+[ext_resource type="PackedScene" uid="uid://wyev1lnxfpnp" path="res://scenes/player_animation_test.tscn" id="2_4dohe"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4dohe"]
 friction = 0.0
@@ -30,12 +30,6 @@ tilt_strength = 400.0
 walk_strength = 1500.0
 speed_curve = SubResource("Curve_4dohe")
 
-[node name="Baby" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(33, -2)
-scale = Vector2(0.72659, 0.72659)
-texture = ExtResource("2_4dohe")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_4dohe")
@@ -46,3 +40,7 @@ position = Vector2(1, -171)
 
 [node name="FloorCollisionMaxHeight" type="Marker2D" parent="."]
 position = Vector2(83, 132)
+
+[node name="PlayerAnimation" parent="." instance=ExtResource("2_4dohe")]
+position = Vector2(-10, 33)
+scale = Vector2(0.85593, 0.85593)

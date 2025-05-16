@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bum62dk6ldflf"
-path="res://.godot/imported/meteor.png-55353fde753731bae4bdb889699bfcff.ctex"
+uid="uid://cb41nrwuuuo0l"
+path="res://.godot/imported/baby.png-c5f4351fe322761efaeee83e21a9e78d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/meteor.png"
-dest_files=["res://.godot/imported/meteor.png-55353fde753731bae4bdb889699bfcff.ctex"]
+source_file="res://assets/Test Art/baby.png"
+dest_files=["res://.godot/imported/baby.png-c5f4351fe322761efaeee83e21a9e78d.ctex"]
 
 [params]
 

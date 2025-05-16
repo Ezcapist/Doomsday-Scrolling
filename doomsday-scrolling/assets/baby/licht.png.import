@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cb41nrwuuuo0l"
-path="res://.godot/imported/baby.png-e3bc9de8bb9e0bad3d58aaea45ac8102.ctex"
+uid="uid://bw03rlc4otijw"
+path="res://.godot/imported/licht.png-932eb10432d2ea9a93c733f17d587fc4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/baby.png"
-dest_files=["res://.godot/imported/baby.png-e3bc9de8bb9e0bad3d58aaea45ac8102.ctex"]
+source_file="res://assets/baby/licht.png"
+dest_files=["res://.godot/imported/licht.png-932eb10432d2ea9a93c733f17d587fc4.ctex"]
 
 [params]
 

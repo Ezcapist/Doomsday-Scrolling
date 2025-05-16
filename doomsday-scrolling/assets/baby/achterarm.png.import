@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xm33yi3ax5qr"
-path="res://.godot/imported/ramp.png-4bd8dc15b13d72a14d3732f72e21caf4.ctex"
+uid="uid://doh6x51wgg62l"
+path="res://.godot/imported/achterarm.png-3c259360a87f9e98910309e7d4ae4d02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ramp.png"
-dest_files=["res://.godot/imported/ramp.png-4bd8dc15b13d72a14d3732f72e21caf4.ctex"]
+source_file="res://assets/baby/achterarm.png"
+dest_files=["res://.godot/imported/achterarm.png-3c259360a87f9e98910309e7d4ae4d02.ctex"]
 
 [params]
 
