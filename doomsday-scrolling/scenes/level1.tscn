@@ -54,7 +54,6 @@ collision_mask = 15
 shape = SubResource("SegmentShape2D_m7ahb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
 limit_top = 0
 limit_bottom = 0
 

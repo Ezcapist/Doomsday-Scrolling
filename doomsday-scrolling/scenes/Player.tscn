@@ -145,15 +145,15 @@ _data = {
 [node name="PlayerAnimationTest" type="Node2D"]
 
 [node name="Achterbeen" type="Sprite2D" parent="."]
-position = Vector2(-7.99999, -3.99991)
-rotation = 0.272009
+position = Vector2(-7.87708, -4.23684)
+rotation = -0.354896
 scale = Vector2(0.2455, 0.2455)
 texture = ExtResource("1_ov3dh")
 offset = Vector2(0, 350)
 
 [node name="Achterarm" type="Sprite2D" parent="."]
-position = Vector2(-11, -154)
-rotation = -0.0507348
+position = Vector2(-6.40001, -154.26)
+rotation = -0.020892
 scale = Vector2(0.2455, 0.2455)
 texture = ExtResource("1_liux7")
 offset = Vector2(200, 380)
