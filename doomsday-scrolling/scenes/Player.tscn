@@ -1,67 +1,83 @@
-[gd_scene load_steps=11 format=3 uid="uid://wyev1lnxfpnp"]
+[gd_scene load_steps=17 format=3 uid="uid://b0he1fbvpb4md"]
 
-[ext_resource type="Texture2D" uid="uid://doh6x51wgg62l" path="res://assets/baby/achterarm.png" id="1_liux7"]
-[ext_resource type="Texture2D" uid="uid://d03uphmklebxw" path="res://assets/baby/achterbeen.png" id="1_ov3dh"]
-[ext_resource type="Texture2D" uid="uid://jam5e7cxm2x1" path="res://assets/baby/torso.png" id="2_lp8et"]
-[ext_resource type="Texture2D" uid="uid://c77ok2ynrhi1a" path="res://assets/baby/head.png" id="4_mixni"]
-[ext_resource type="Texture2D" uid="uid://dc41y5k844or" path="res://assets/baby/voorbeen.png" id="5_wcgta"]
-[ext_resource type="Texture2D" uid="uid://bw03rlc4otijw" path="res://assets/baby/licht.png" id="6_mixni"]
-[ext_resource type="Texture2D" uid="uid://bmtt4erx7a8ix" path="res://assets/baby/voorarm.png" id="7_wcgta"]
+[ext_resource type="Script" uid="uid://bkks7lpbqlhsy" path="res://scripts/player.gd" id="1_72ieh"]
+[ext_resource type="Texture2D" uid="uid://d03uphmklebxw" path="res://assets/baby/achterbeen.png" id="2_kbsxf"]
+[ext_resource type="Texture2D" uid="uid://doh6x51wgg62l" path="res://assets/baby/achterarm.png" id="3_rgeog"]
+[ext_resource type="Texture2D" uid="uid://jam5e7cxm2x1" path="res://assets/baby/torso.png" id="4_opo22"]
+[ext_resource type="Texture2D" uid="uid://c77ok2ynrhi1a" path="res://assets/baby/head.png" id="5_8rb0w"]
+[ext_resource type="Texture2D" uid="uid://dc41y5k844or" path="res://assets/baby/voorbeen.png" id="6_sd3sa"]
+[ext_resource type="Texture2D" uid="uid://bmtt4erx7a8ix" path="res://assets/baby/voorarm.png" id="7_m2qjg"]
+[ext_resource type="Texture2D" uid="uid://bw03rlc4otijw" path="res://assets/baby/licht.png" id="8_llb5v"]
 
-[sub_resource type="Animation" id="Animation_wcgta"]
-length = 0.001
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4dohe"]
+friction = 0.0
+
+[sub_resource type="Curve" id="Curve_4dohe"]
+_limits = [-2.23517e-08, 1.0, -90.0, 90.0]
+_data = [Vector2(-90, 1), 0.0, -0.00438597, 0, 1, Vector2(-21.6, 0.7), -0.00438597, -0.0486111, 1, 1, Vector2(-7.2, -2.23517e-08), -0.0486111, 0.0, 1, 1, Vector2(1.8, -2.23517e-08), 0.0, 0.2, 0, 1, Vector2(5.4, 0.72), 0.2, 0.00330969, 1, 1, Vector2(90, 1), 0.00330969, 0.0, 1, 0]
+point_count = 6
+metadata/_snap_enabled = true
+metadata/_snap_count = 100
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4dohe"]
+radius = 90.0
+height = 388.0
+
+[sub_resource type="Animation" id="Animation_smehm"]
+resource_name = "RageKick"
+length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Torso:rotation")
-tracks/0/interp = 1
+tracks/0/path = NodePath("Bovenlichaam/Torso/Voorarm:rotation")
+tracks/0/interp = 4
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0]
+"values": [-2.89899, -1.61967]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Torso/Voorbeen:rotation")
-tracks/1/interp = 1
+tracks/1/path = NodePath("Bovenlichaam/Torso/Achterarm:rotation")
+tracks/1/interp = 4
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-0.52844]
+"values": [-4.0736, -2.66163]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Torso/RemoteAchterbeen:rotation")
+tracks/2/path = NodePath("%Onderlichaam/Voorbeen:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.272009]
+"values": [0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Torso/Head:rotation")
+tracks/3/path = NodePath("%Onderlichaam/Achterbeen:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.111571]
+"values": [0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Torso/Voorarm:rotation")
+tracks/4/path = NodePath("Bovenlichaam/Torso/Head:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -70,15 +86,27 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bovenlichaam/Torso:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_mixni"]
-resource_name = "Walk_Cycle"
+resource_name = "Walking"
 length = 1.2
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Torso:rotation")
+tracks/0/path = NodePath("Bovenlichaam/Torso:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -90,7 +118,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Torso/Voorbeen:rotation")
+tracks/1/path = NodePath("Onderlichaam/Voorbeen:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -102,7 +130,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Torso/RemoteAchterbeen:rotation")
+tracks/2/path = NodePath("Onderlichaam/Achterbeen:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -114,7 +142,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Torso/Head:rotation")
+tracks/3/path = NodePath("Bovenlichaam/Torso/Head:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -126,7 +154,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Torso/Voorarm:rotation")
+tracks/4/path = NodePath("Bovenlichaam/Torso/Voorarm:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -135,73 +163,258 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0, 0.0872665, 0.0, -0.0872665, 0.0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bovenlichaam/Torso/Achterarm:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ur7pv"]
+resource_name = "Crying"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bovenlichaam/Torso/Voorarm:rotation")
+tracks/0/interp = 4
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.25664, -2.23751]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bovenlichaam/Torso/Achterarm:rotation")
+tracks/1/interp = 4
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-2.95484, -2.15374]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%Onderlichaam/Voorbeen:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.51146, -0.214675]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%Onderlichaam/Achterbeen:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.558505, 1.01229]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bovenlichaam/Torso/Head:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.267035]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Bovenlichaam/Torso:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -0.106465]
+}
+
+[sub_resource type="Animation" id="Animation_y4r1p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bovenlichaam/Torso/Voorarm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bovenlichaam/Torso/Achterarm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.0265632]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%Onderlichaam/Achterbeen:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bovenlichaam/Torso/Head:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bovenlichaam/Torso:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%Onderlichaam/Voorbeen:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d73po"]
 _data = {
-&"RESET": SubResource("Animation_wcgta"),
-&"Walk_Cycle": SubResource("Animation_mixni")
+&"Crying": SubResource("Animation_ur7pv"),
+&"RESET": SubResource("Animation_y4r1p"),
+&"RageKick": SubResource("Animation_smehm"),
+&"Walking": SubResource("Animation_mixni")
 }
 
-[node name="PlayerAnimationTest" type="Node2D"]
+[node name="Player" type="RigidBody2D"]
+z_index = 2
+collision_mask = 14
+mass = 20.0
+physics_material_override = SubResource("PhysicsMaterial_4dohe")
+contact_monitor = true
+max_contacts_reported = 3
+angular_damp = 3.0
+script = ExtResource("1_72ieh")
+top_speed = 250.0
+walk_strength = 3500.0
+upright_kick_strength = 350.0
+speed_curve = SubResource("Curve_4dohe")
 
-[node name="Achterbeen" type="Sprite2D" parent="."]
-position = Vector2(-7.87708, -4.23684)
-rotation = -0.354896
-scale = Vector2(0.2455, 0.2455)
-texture = ExtResource("1_ov3dh")
-offset = Vector2(0, 350)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_4dohe")
+debug_color = Color(0, 0.6, 0.701961, 0)
 
-[node name="Achterarm" type="Sprite2D" parent="."]
-position = Vector2(-6.40001, -154.26)
-rotation = -0.020892
-scale = Vector2(0.2455, 0.2455)
-texture = ExtResource("1_liux7")
-offset = Vector2(200, 380)
+[node name="TiltForcePoint" type="Marker2D" parent="."]
+position = Vector2(0, -184)
 
-[node name="Torso" type="Sprite2D" parent="."]
+[node name="FloorCollisionMaxHeight" type="Marker2D" parent="."]
+position = Vector2(83, 132)
+
+[node name="PlayerAnimation" type="Node2D" parent="."]
+position = Vector2(-10, 33)
+scale = Vector2(0.85593, 0.85593)
+
+[node name="Bovenlichaam" type="Node2D" parent="PlayerAnimation"]
+
+[node name="Torso" type="Sprite2D" parent="PlayerAnimation/Bovenlichaam"]
 scale = Vector2(0.246, 0.246)
-texture = ExtResource("2_lp8et")
+texture = ExtResource("4_opo22")
 offset = Vector2(0, -200)
 
-[node name="RemoteAchterarm" type="RemoteTransform2D" parent="Torso"]
-position = Vector2(-44.7155, -626.016)
-rotation = -0.0507348
-scale = Vector2(0.997968, 0.997968)
-remote_path = NodePath("../../Achterarm")
-
-[node name="Head" type="Sprite2D" parent="Torso"]
+[node name="Head" type="Sprite2D" parent="PlayerAnimation/Bovenlichaam/Torso"]
 position = Vector2(-76.1816, -663.624)
-rotation = 0.111571
 scale = Vector2(0.997968, 0.997968)
-texture = ExtResource("4_mixni")
+texture = ExtResource("5_8rb0w")
 offset = Vector2(150, -200)
 
-[node name="Voorbeen" type="Sprite2D" parent="Torso"]
-position = Vector2(48.7805, -8.13013)
-rotation = -0.52844
-scale = Vector2(0.997968, 0.997968)
-texture = ExtResource("5_wcgta")
-offset = Vector2(0, 400)
-
-[node name="RemoteAchterbeen" type="RemoteTransform2D" parent="Torso"]
-position = Vector2(-32.5203, -16.2598)
-rotation = 0.272009
-scale = Vector2(0.997968, 0.997968)
-remote_path = NodePath("../../Achterbeen")
-
-[node name="Voorarm" type="Sprite2D" parent="Torso"]
+[node name="Voorarm" type="Sprite2D" parent="PlayerAnimation/Bovenlichaam/Torso"]
 position = Vector2(-143.54, -595.013)
-texture = ExtResource("7_wcgta")
+texture = ExtResource("7_m2qjg")
 offset = Vector2(400, 150)
 
-[node name="Light" type="Sprite2D" parent="Torso/Voorarm"]
+[node name="Licht" type="Sprite2D" parent="PlayerAnimation/Bovenlichaam/Torso/Voorarm"]
 position = Vector2(566.536, -56.019)
 rotation = -0.0507348
 scale = Vector2(0.997968, 0.997968)
-texture = ExtResource("6_mixni")
+texture = ExtResource("8_llb5v")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Achterarm" type="Sprite2D" parent="PlayerAnimation/Bovenlichaam/Torso"]
+z_index = -1
+position = Vector2(-29.5721, -626.914)
+rotation = -0.0265632
+scale = Vector2(0.997968, 0.997968)
+texture = ExtResource("3_rgeog")
+offset = Vector2(200, 380)
+
+[node name="Onderlichaam" type="Node2D" parent="PlayerAnimation"]
+unique_name_in_owner = true
+
+[node name="Voorbeen" type="Sprite2D" parent="PlayerAnimation/Onderlichaam"]
+position = Vector2(12.0404, -1.74004)
+scale = Vector2(0.2455, 0.2455)
+texture = ExtResource("6_sd3sa")
+offset = Vector2(0, 400)
+
+[node name="Achterbeen" type="Sprite2D" parent="PlayerAnimation/Onderlichaam"]
+z_index = -1
+position = Vector2(-7.96163, -4.07574)
+scale = Vector2(0.2455, 0.2455)
+texture = ExtResource("2_kbsxf")
+offset = Vector2(0, 350)
+
+[node name="Anim" type="AnimationPlayer" parent="PlayerAnimation"]
+unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_d73po")
 }
-autoplay = "Walk_Cycle"
+autoplay = "Walking"

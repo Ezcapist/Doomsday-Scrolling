@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5e5us43cbrjf"]
 
-[ext_resource type="Texture2D" uid="uid://xm33yi3ax5qr" path="res://assets/ramp.png" id="1_ngryf"]
+[ext_resource type="Texture2D" uid="uid://xm33yi3ax5qr" path="res://assets/Test Art/ramp.png" id="1_ngryf"]
 
 [node name="Ramp" type="StaticBody2D"]
 
