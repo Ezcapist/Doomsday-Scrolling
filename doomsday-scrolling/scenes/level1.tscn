@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dnknx2qvjq3ud"]
+[gd_scene load_steps=10 format=3 uid="uid://dnknx2qvjq3ud"]
 
 [ext_resource type="PackedScene" uid="uid://b0he1fbvpb4md" path="res://prefabs/player.tscn" id="1_g2h75"]
 [ext_resource type="Script" uid="uid://cbgqnrpsuhfmb" path="res://scripts/level_1.gd" id="1_ru4tf"]
-[ext_resource type="Texture2D" uid="uid://do4jjhx1d3rsu" path="res://assets/Test Art/background.png" id="3_dwgg1"]
+[ext_resource type="Texture2D" uid="uid://die2xf2wx65ww" path="res://assets/Test Art/test bg.png" id="2_6sh32"]
+[ext_resource type="Texture2D" uid="uid://b1qeq7pgyrdad" path="res://assets/Test Art/test fg.png" id="3_ejswk"]
 [ext_resource type="PackedScene" uid="uid://b5e5us43cbrjf" path="res://prefabs/ramp.tscn" id="3_m7ahb"]
 [ext_resource type="PackedScene" uid="uid://bsdsxgrkxn753" path="res://scenes/missile.tscn" id="4_dwgg1"]
 
@@ -35,8 +36,14 @@ script = ExtResource("1_ru4tf")
 motion_mirroring = Vector2(1, 0)
 
 [node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(955, 368)
-texture = ExtResource("3_dwgg1")
+position = Vector2(979, 542)
+scale = Vector2(0.557442, 0.434375)
+texture = ExtResource("2_6sh32")
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(979, 887)
+scale = Vector2(0.559904, 0.425)
+texture = ExtResource("3_ejswk")
 
 [node name="Floor" type="StaticBody2D" parent="."]
 collision_layer = 8
@@ -54,8 +61,10 @@ collision_mask = 15
 shape = SubResource("SegmentShape2D_m7ahb")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(979, 0)
 limit_top = 0
 limit_bottom = 0
+position_smoothing_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_g2h75")]
 position = Vector2(195, 791)
@@ -72,9 +81,10 @@ autostart = true
 script = SubResource("GDScript_6sh32")
 
 [node name="Obstacles" type="Node2D" parent="."]
-position = Vector2(752, 864)
+position = Vector2(1645, 864)
 
 [node name="Ramp" parent="Obstacles" instance=ExtResource("3_m7ahb")]
+position = Vector2(-829, 0)
 collision_layer = 4
 collision_mask = 15
 
