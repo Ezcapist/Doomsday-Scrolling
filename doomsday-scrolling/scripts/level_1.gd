@@ -7,14 +7,5 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
-
-#Spawning Missiles
-
-var missile_scene: PackedScene = load("res://scenes/missile.tscn")
-
-func _on_missile_timer_timeout() -> void:
-	var missile = missile_scene.instantiate()
-	
-	$MissileStorage.add_child(missile)

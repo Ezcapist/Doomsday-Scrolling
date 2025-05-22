@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=3 uid="uid://dnknx2qvjq3ud"]
+
+[ext_resource type="Script" uid="uid://cbgqnrpsuhfmb" path="res://scripts/level_1.gd" id="1_pvdot"]
+[ext_resource type="Texture2D" uid="uid://do4jjhx1d3rsu" path="res://assets/Test Art/background.png" id="2_em8yu"]
+[ext_resource type="Script" uid="uid://sm3ts2ru46qe" path="res://scripts/interface.gd" id="2_jj4wm"]
+[ext_resource type="PackedScene" uid="uid://b0he1fbvpb4md" path="res://scenes/player.tscn" id="3_jj4wm"]
+[ext_resource type="PackedScene" uid="uid://b5e5us43cbrjf" path="res://scenes/ramp.tscn" id="4_10pvp"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3g4x6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dwgg1"]
+size = Vector2(176, 1090)
+
+[node name="Wereld" type="Node2D"]
+script = ExtResource("1_pvdot")
+
+[node name="Interface" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("2_jj4wm")
+player = NodePath("../Player")
+
+[node name="DebugLabel" type="Label" parent="Interface"]
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 104.0
+offset_bottom = 39.0
+theme_override_font_sizes/font_size = 35
+text = "Debug Text"
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(955, 368)
+texture = ExtResource("2_em8yu")
+
+[node name="Floor" type="StaticBody2D" parent="."]
+z_index = 1
+position = Vector2(376, 928)
+collision_layer = 8
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("WorldBoundaryShape2D_3g4x6")
+
+[node name="BackWall" type="StaticBody2D" parent="."]
+collision_layer = 8
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackWall"]
+position = Vector2(-96, 535)
+shape = SubResource("RectangleShape2D_dwgg1")
+
+[node name="Player" parent="." instance=ExtResource("3_jj4wm")]
+position = Vector2(176, 736)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 0
+limit_top = 0
+limit_bottom = 0
+
+[node name="Obstacles" type="Node2D" parent="."]
+position = Vector2(752, 864)
+
+[node name="Ramp" parent="Obstacles" instance=ExtResource("4_10pvp")]
+collision_layer = 4
+collision_mask = 15
