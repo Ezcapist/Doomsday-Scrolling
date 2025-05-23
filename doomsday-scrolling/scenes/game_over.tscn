@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2p5khg8pqd3u"]
+[gd_scene load_steps=4 format=3 uid="uid://b2p5khg8pqd3u"]
 
 [ext_resource type="Texture2D" uid="uid://m3jhq7wiieiy" path="res://assets/Test Art/game over.jpg" id="1_xeevv"]
+[ext_resource type="AudioStream" uid="uid://bg4ti33jppoxo" path="res://assets/Audio/Baby Death.wav" id="2_tbwuq"]
+[ext_resource type="AudioStream" uid="uid://mwuni4hx1u0a" path="res://assets/Audio/Explosion.wav" id="3_racf3"]
 
 [node name="Game Over Screen" type="Node2D"]
 
@@ -8,3 +10,11 @@
 position = Vector2(961.185, 541.229)
 scale = Vector2(2.50357, 2.50357)
 texture = ExtResource("1_xeevv")
+
+[node name="BabyDeath" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_tbwuq")
+autoplay = true
+
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_racf3")
+autoplay = true

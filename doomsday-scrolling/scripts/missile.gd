@@ -17,17 +17,10 @@ func _process(delta):
 	position += Vector2(0, 1.0) * 100 * delta
 	
 	
-#####var explosion_scene: PackedScene = load("res://scenes/explosion.tscn")
-
 #Game Over
 func _on_body_entered(body: Node2D) -> void:
 	print('body entered')
 	print(body)
-	###var explosion = explosion_scene.instantiate()
-	####add_child(explosion)
-	$Explosion.play()
-	$BabyDeath.play()
-	await get_tree().create_timer(1.5).timeout
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
 	
 
