@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmdom3dui3mb"]
+
+[ext_resource type="Texture2D" uid="uid://cj22huutd5clp" path="res://assets/Test Art/Test obstacles/square.png" id="1_me13q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_shrqe"]
+size = Vector2(500.448, 497.895)
+
+[node name="Square Obstacle" type="StaticBody2D"]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-3.05176e-05, 0)
+rotation = 3.14159
+scale = Vector2(0.783298, -0.160676)
+shape = SubResource("RectangleShape2D_shrqe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 3.14159
+scale = Vector2(0.783298, -0.160676)
+texture = ExtResource("1_me13q")

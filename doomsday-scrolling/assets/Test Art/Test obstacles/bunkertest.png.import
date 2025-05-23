@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s55r5hw3riop"
-path="res://.godot/imported/halfcircle.png-5df4e3a0bc0f35d74e3d60c83fb2a2c7.ctex"
+uid="uid://doutxj3jts86x"
+path="res://.godot/imported/bunkertest.png-32d4fd362092b2f0e0dcb807a35a62d1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Test Art/halfcircle.png"
-dest_files=["res://.godot/imported/halfcircle.png-5df4e3a0bc0f35d74e3d60c83fb2a2c7.ctex"]
+source_file="res://assets/Test Art/Test obstacles/bunkertest.png"
+dest_files=["res://.godot/imported/bunkertest.png-32d4fd362092b2f0e0dcb807a35a62d1.ctex"]
 
 [params]
 

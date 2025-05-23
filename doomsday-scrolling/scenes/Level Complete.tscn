@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://clgdqourd3oxw"]
+
+[ext_resource type="Texture2D" uid="uid://v1s6gfm8tcq0" path="res://assets/Test Art/win.jpg" id="1_mfj2f"]
+
+[node name="Sprite2D" type="Sprite2D"]
+position = Vector2(959.75, 537.75)
+scale = Vector2(3.47649, 3.48071)
+texture = ExtResource("1_mfj2f")

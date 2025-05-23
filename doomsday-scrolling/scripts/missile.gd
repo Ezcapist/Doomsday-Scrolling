@@ -12,16 +12,11 @@ func _ready():
 
 #Movement Missiles
 func _process(delta):
-	#var rng:= RandomNumberGenerator.new()
-	#var MissileSpeed = rng.randi_range(10,400)
-	position += Vector2(0, 1.0) * 100 * delta
+		position += Vector2(0, 1.0) * 100 * delta
 	
 	
 #Game Over
 func _on_body_entered(body: Node2D) -> void:
-	print('body entered')
+	print('missile hit')
 	print(body)
 	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
-	
-
-	

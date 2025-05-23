@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dnknx2qvjq3ud"]
+[gd_scene load_steps=12 format=3 uid="uid://dnknx2qvjq3ud"]
 
 [ext_resource type="PackedScene" uid="uid://b0he1fbvpb4md" path="res://scenes/Player.tscn" id="1_g2h75"]
 [ext_resource type="Script" uid="uid://cbgqnrpsuhfmb" path="res://scripts/level_1.gd" id="1_ru4tf"]
 [ext_resource type="Texture2D" uid="uid://die2xf2wx65ww" path="res://assets/Test Art/test bg.png" id="2_6sh32"]
 [ext_resource type="Texture2D" uid="uid://b1qeq7pgyrdad" path="res://assets/Test Art/test fg.png" id="3_ejswk"]
-[ext_resource type="PackedScene" uid="uid://b5e5us43cbrjf" path="res://scenes/ramp.tscn" id="3_m7ahb"]
-[ext_resource type="PackedScene" uid="uid://bsdsxgrkxn753" path="res://scenes/missile.tscn" id="4_dwgg1"]
+[ext_resource type="PackedScene" uid="uid://cdo61qtfc2qqv" path="res://scenes/triangle_obstacle.tscn" id="6_6sh32"]
+[ext_resource type="PackedScene" uid="uid://3v6en517ms02" path="res://scenes/circle_obstacle.tscn" id="6_ejswk"]
+[ext_resource type="PackedScene" uid="uid://cmdom3dui3mb" path="res://scenes/SquareObstacle.tscn" id="7_ejswk"]
+[ext_resource type="PackedScene" uid="uid://fmmwqws06lkf" path="res://scenes/bunker.tscn" id="8_bbk5w"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3g4x6"]
 distance = 81.0
@@ -73,24 +75,71 @@ position_smoothing_enabled = true
 position_smoothing_speed = 1.0
 rotation_smoothing_enabled = true
 
-[node name="Missile" parent="." instance=ExtResource("4_dwgg1")]
-visible = false
-position = Vector2(86, -369)
-scale = Vector2(1.4578, 1.4578)
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
 script = SubResource("GDScript_6sh32")
 
 [node name="Obstacles" type="Node2D" parent="."]
-position = Vector2(1645, 864)
+position = Vector2(3217, 882)
 
-[node name="Ramp" parent="Obstacles" instance=ExtResource("3_m7ahb")]
-position = Vector2(-829, 0)
-collision_layer = 4
-collision_mask = 15
+[node name="CircleCluster" type="Node2D" parent="Obstacles"]
+position = Vector2(2181, 22)
+
+[node name="Circle Obstacle3" parent="Obstacles/CircleCluster" instance=ExtResource("6_ejswk")]
+position = Vector2(302, 25)
+scale = Vector2(1.4424, 2.90108)
+
+[node name="Circle Obstacle2" parent="Obstacles/CircleCluster" instance=ExtResource("6_ejswk")]
+position = Vector2(-131, 25)
+scale = Vector2(1.08235, 2.11197)
+
+[node name="Circle Obstacle" parent="Obstacles/CircleCluster" instance=ExtResource("6_ejswk")]
+position = Vector2(-455, 25)
+scale = Vector2(1, 1.32)
+
+[node name="TriangleCluster" type="Node2D" parent="Obstacles"]
+position = Vector2(-543, -20)
+
+[node name="Triangle Obstacle2" parent="Obstacles/TriangleCluster" instance=ExtResource("6_6sh32")]
+position = Vector2(0, -7)
+scale = Vector2(0.48001, 0.67999)
+
+[node name="Triangle Obstacle3" parent="Obstacles/TriangleCluster" instance=ExtResource("6_6sh32")]
+position = Vector2(566, -23)
+scale = Vector2(1.07999, 0.827146)
+
+[node name="Triangle Obstacle" parent="Obstacles/TriangleCluster" instance=ExtResource("6_6sh32")]
+position = Vector2(-581, -41)
+
+[node name="Big Ramp" type="Node2D" parent="Obstacles"]
+position = Vector2(4551, -234)
+
+[node name="Circle Obstacle" parent="Obstacles/Big Ramp" instance=ExtResource("6_ejswk")]
+position = Vector2(-136, -20)
+rotation = -0.261799
+scale = Vector2(1, 1.34015)
+
+[node name="Triangle Obstacle2" parent="Obstacles/Big Ramp" instance=ExtResource("6_6sh32")]
+position = Vector2(-329, 80)
+scale = Vector2(0.751857, 1)
+
+[node name="Triangle Obstacle" parent="Obstacles/Big Ramp" instance=ExtResource("6_6sh32")]
+position = Vector2(-490, 153)
+scale = Vector2(0.48, 1)
+
+[node name="Square Obstacle" parent="Obstacles/Big Ramp" instance=ExtResource("7_ejswk")]
+position = Vector2(-329, 215)
+rotation = -0.523598
+scale = Vector2(2.29245, 4.41846)
+
+[node name="Square Obstacle2" parent="Obstacles/Big Ramp" instance=ExtResource("7_ejswk")]
+position = Vector2(285, -123)
+scale = Vector2(1.6, 1)
 
 [node name="MissileStorage" type="Node2D" parent="."]
+
+[node name="Bunker" parent="." instance=ExtResource("8_bbk5w")]
+position = Vector2(10693, 887)
 
 [connection signal="timeout" from="Timer" to="." method="_on_missile_timer_timeout"]
