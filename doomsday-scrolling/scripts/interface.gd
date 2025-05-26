@@ -16,5 +16,6 @@ func process_debug_label():
 	text += "rotation=%.1f\n" % player.rotation_degrees
 	text += "leg_counter_rotation=%.1f\n" % player.lower_body.rotation_degrees
 	text += "is_on_floor=%s\n" % ("Yes" if player.is_on_floor else "No")
+	text += "up velocity=%.1f\n" % player.linear_velocity.y
 
 	debug_label.text = text

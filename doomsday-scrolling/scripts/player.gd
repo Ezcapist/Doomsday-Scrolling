@@ -7,6 +7,7 @@ class_name Player extends RigidBody2D
 @export var max_bend_angle: float = 70.0
 @export var upright_recover_angle: float = 50.0
 @export var upright_kick_strength: float = 1000.0
+@export var max_up_velocity: float = 500.0
 @export var speed_curve: Curve
 
 @onready var lower_body: Node2D = %Onderlichaam
@@ -69,7 +70,8 @@ func _physics_process(delta: float):
 		process_tilt(delta)
 		if is_on_floor:
 			state = State.Walking
-		
+		if linear_velocity.y < -max_up_velocity:
+			linear_velocity.y = -max_up_velocity
 		anim.speed_scale = 0.3
 	
 	elif state == State.LyingDown:
