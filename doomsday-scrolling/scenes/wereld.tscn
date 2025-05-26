@@ -68,5 +68,14 @@ position = Vector2(752, 864)
 collision_layer = 4
 collision_mask = 15
 
+[node name="Ramp2" parent="Obstacles" instance=ExtResource("4_10pvp")]
+position = Vector2(1072, 8)
+collision_layer = 4
+collision_mask = 15
+
 [node name="Trampoline" parent="." instance=ExtResource("6_jj4wm")]
-position = Vector2(1208, 864)
+position = Vector2(1176, 872)
+
+[node name="Trampoline2" parent="." instance=ExtResource("6_jj4wm")]
+position = Vector2(2224, 864)
+rotation = 0.345894

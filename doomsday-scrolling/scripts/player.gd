@@ -3,6 +3,7 @@ class_name Player extends RigidBody2D
 @export var top_speed: float = 50.0
 @export var tilt_strength: float = 1000.0
 @export var walk_strength: float = 500.0
+@export var fly_strength: float = 100.0
 @export var damp_strength: float = 500.0
 @export var max_bend_angle: float = 70.0
 @export var upright_recover_angle: float = 50.0
@@ -44,6 +45,7 @@ func _integrate_forces(directstate: PhysicsDirectBodyState2D):
 
 func _physics_process(delta: float):
 	is_lying_down = is_on_floor and abs(rotation_degrees) > max_bend_angle
+	axis = Input.get_axis("move_left", "move_right")
 
 	if state == State.Walking:
 		process_tilt(delta)
@@ -72,6 +74,7 @@ func _physics_process(delta: float):
 			state = State.Walking
 		if linear_velocity.y < -max_up_velocity:
 			linear_velocity.y = -max_up_velocity
+		apply_central_force(Vector2.RIGHT * fly_strength * mass * signf(rotation_degrees))
 		anim.speed_scale = 0.3
 	
 	elif state == State.LyingDown:
@@ -101,7 +104,6 @@ func _physics_process(delta: float):
 			state = State.Walking
 
 func process_tilt(delta: float):
-	axis = Input.get_axis("move_left", "move_right")
 	var tilt_force = axis * mass * tilt_strength
 	apply_torque(tilt_force * 200.0)
 

@@ -5,5 +5,6 @@ extends Area2D
 
 func _on_area_body_entered(body: Node2D):
 	if body is RigidBody2D:
-		body.linear_velocity.y = -body.linear_velocity.y * bounciness - extra_velocity
+		var dir = -global_transform.y
+		body.linear_velocity = body.linear_velocity.bounce(dir) * bounciness + extra_velocity * dir
 	pass
