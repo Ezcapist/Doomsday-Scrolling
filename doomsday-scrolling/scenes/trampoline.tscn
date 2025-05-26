@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5cccin45hn8p"]
+
+[ext_resource type="Script" uid="uid://cl3p44taifi6w" path="res://scripts/trampoline.gd" id="1_2yctu"]
+
+[sub_resource type="Gradient" id="Gradient_4xptw"]
+offsets = PackedFloat32Array(0.613861)
+colors = PackedColorArray(0.810794, 0, 0.147485, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2yctu"]
+gradient = SubResource("Gradient_4xptw")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xptw"]
+size = Vector2(256, 64)
+
+[node name="Trampoline" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_2yctu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.8147e-06, 32)
+scale = Vector2(4, 1)
+texture = SubResource("GradientTexture2D_2yctu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_4xptw")
+
+[connection signal="body_entered" from="." to="." method="_on_area_body_entered"]

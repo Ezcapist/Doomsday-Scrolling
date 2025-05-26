@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnknx2qvjq3ud"]
+[gd_scene load_steps=9 format=3 uid="uid://dnknx2qvjq3ud"]
 
 [ext_resource type="Script" uid="uid://cbgqnrpsuhfmb" path="res://scripts/level_1.gd" id="1_pvdot"]
 [ext_resource type="Texture2D" uid="uid://do4jjhx1d3rsu" path="res://assets/Test Art/background.png" id="2_em8yu"]
 [ext_resource type="Script" uid="uid://sm3ts2ru46qe" path="res://scripts/interface.gd" id="2_jj4wm"]
 [ext_resource type="PackedScene" uid="uid://b0he1fbvpb4md" path="res://scenes/player.tscn" id="3_jj4wm"]
 [ext_resource type="PackedScene" uid="uid://b5e5us43cbrjf" path="res://scenes/ramp.tscn" id="4_10pvp"]
+[ext_resource type="PackedScene" uid="uid://c5cccin45hn8p" path="res://scenes/trampoline.tscn" id="6_jj4wm"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3g4x6"]
 
@@ -66,3 +67,6 @@ position = Vector2(752, 864)
 [node name="Ramp" parent="Obstacles" instance=ExtResource("4_10pvp")]
 collision_layer = 4
 collision_mask = 15
+
+[node name="Trampoline" parent="." instance=ExtResource("6_jj4wm")]
+position = Vector2(1208, 864)

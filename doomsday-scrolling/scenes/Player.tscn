@@ -354,12 +354,6 @@ position = Vector2(0, -2)
 shape = SubResource("CapsuleShape2D_4dohe")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
-[node name="TiltForcePoint" type="Marker2D" parent="."]
-position = Vector2(0, -184)
-
-[node name="FloorCollisionMaxHeight" type="Marker2D" parent="."]
-position = Vector2(83, 132)
-
 [node name="PlayerAnimation" type="Node2D" parent="."]
 position = Vector2(-10, 33)
 scale = Vector2(0.85593, 0.85593)

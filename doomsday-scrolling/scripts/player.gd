@@ -9,8 +9,6 @@ class_name Player extends RigidBody2D
 @export var upright_kick_strength: float = 1000.0
 @export var speed_curve: Curve
 
-@onready var tilt_force_point: Node2D = $TiltForcePoint
-@onready var floor_max_height: Node2D = $FloorCollisionMaxHeight
 @onready var lower_body: Node2D = %Onderlichaam
 @onready var anim: AnimationPlayer = %Anim
 
@@ -33,6 +31,8 @@ func _ready() -> void:
 	pass
 
 func _integrate_forces(directstate: PhysicsDirectBodyState2D):
+	is_on_floor = false
+
 	for i in range(directstate.get_contact_count()):
 		var body := directstate.get_contact_collider_object(i)
 		var normal := directstate.get_contact_local_normal(i)
@@ -101,7 +101,7 @@ func _physics_process(delta: float):
 func process_tilt(delta: float):
 	axis = Input.get_axis("move_left", "move_right")
 	var tilt_force = axis * mass * tilt_strength
-	apply_force(tilt_force * global_transform.x, tilt_force_point.position)
+	apply_torque(tilt_force * 200.0)
 
 func process_friction(delta: float):
 	# Apply friction (damping).
