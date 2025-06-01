@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dnknx2qvjq3ud"]
+[gd_scene load_steps=16 format=3 uid="uid://dnknx2qvjq3ud"]
 
 [ext_resource type="PackedScene" uid="uid://b0he1fbvpb4md" path="res://scenes/Player.tscn" id="1_g2h75"]
 [ext_resource type="Script" uid="uid://cbgqnrpsuhfmb" path="res://scripts/level_1.gd" id="1_ru4tf"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://3v6en517ms02" path="res://scenes/circle_obstacle.tscn" id="6_ejswk"]
 [ext_resource type="PackedScene" uid="uid://cmdom3dui3mb" path="res://scenes/SquareObstacle.tscn" id="7_ejswk"]
 [ext_resource type="PackedScene" uid="uid://fmmwqws06lkf" path="res://scenes/bunker.tscn" id="8_bbk5w"]
+[ext_resource type="PackedScene" uid="uid://c5cccin45hn8p" path="res://scenes/trampoline.tscn" id="8_d3jkd"]
+[ext_resource type="PackedScene" uid="uid://b5e5us43cbrjf" path="res://scenes/ramp.tscn" id="10_u3awl"]
+[ext_resource type="AudioStream" uid="uid://beiep0b3sc1ao" path="res://assets/Audio/Shorts audio.wav" id="11_u3awl"]
+[ext_resource type="FontFile" uid="uid://bkhsna4cd3562" path="res://assets/kindergarten.ttf" id="12_2ku1j"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_3g4x6"]
 distance = 81.0
@@ -63,8 +67,8 @@ collision_mask = 15
 shape = SubResource("SegmentShape2D_m7ahb")
 
 [node name="Player" parent="." instance=ExtResource("1_g2h75")]
-position = Vector2(195, 791)
-top_speed = 100.0
+position = Vector2(9203, 196)
+top_speed = 180.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -791)
@@ -76,30 +80,15 @@ position_smoothing_speed = 1.0
 rotation_smoothing_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 8.0
 autostart = true
 script = SubResource("GDScript_6sh32")
 
 [node name="Obstacles" type="Node2D" parent="."]
 position = Vector2(3217, 882)
 
-[node name="CircleCluster" type="Node2D" parent="Obstacles"]
-position = Vector2(2181, 22)
-
-[node name="Circle Obstacle3" parent="Obstacles/CircleCluster" instance=ExtResource("6_ejswk")]
-position = Vector2(302, 25)
-scale = Vector2(1.4424, 2.90108)
-
-[node name="Circle Obstacle2" parent="Obstacles/CircleCluster" instance=ExtResource("6_ejswk")]
-position = Vector2(-131, 25)
-scale = Vector2(1.08235, 2.11197)
-
-[node name="Circle Obstacle" parent="Obstacles/CircleCluster" instance=ExtResource("6_ejswk")]
-position = Vector2(-455, 25)
-scale = Vector2(1, 1.32)
-
 [node name="TriangleCluster" type="Node2D" parent="Obstacles"]
-position = Vector2(-543, -20)
+position = Vector2(-1147, -20)
 
 [node name="Triangle Obstacle2" parent="Obstacles/TriangleCluster" instance=ExtResource("6_6sh32")]
 position = Vector2(0, -7)
@@ -113,33 +102,104 @@ scale = Vector2(1.07999, 0.827146)
 position = Vector2(-581, -41)
 
 [node name="Big Ramp" type="Node2D" parent="Obstacles"]
-position = Vector2(4551, -234)
+position = Vector2(5634, -371)
 
 [node name="Circle Obstacle" parent="Obstacles/Big Ramp" instance=ExtResource("6_ejswk")]
-position = Vector2(-136, -20)
+position = Vector2(-149, 10)
 rotation = -0.261799
 scale = Vector2(1, 1.34015)
 
 [node name="Triangle Obstacle2" parent="Obstacles/Big Ramp" instance=ExtResource("6_6sh32")]
-position = Vector2(-329, 80)
+position = Vector2(-342, 110)
 scale = Vector2(0.751857, 1)
 
 [node name="Triangle Obstacle" parent="Obstacles/Big Ramp" instance=ExtResource("6_6sh32")]
-position = Vector2(-490, 153)
+position = Vector2(-503, 183)
 scale = Vector2(0.48, 1)
 
 [node name="Square Obstacle" parent="Obstacles/Big Ramp" instance=ExtResource("7_ejswk")]
-position = Vector2(-329, 215)
+position = Vector2(-342, 245)
 rotation = -0.523598
 scale = Vector2(2.29245, 4.41846)
 
 [node name="Square Obstacle2" parent="Obstacles/Big Ramp" instance=ExtResource("7_ejswk")]
-position = Vector2(285, -123)
+position = Vector2(272, -93)
 scale = Vector2(1.6, 1)
+
+[node name="Square Obstacle3" parent="Obstacles/Big Ramp" instance=ExtResource("7_ejswk")]
+position = Vector2(-626, 45)
+scale = Vector2(2.92419, 0.859134)
+
+[node name="trampoline" type="Node2D" parent="Obstacles"]
+position = Vector2(3718, 17)
+
+[node name="Trampoline" parent="Obstacles/trampoline" instance=ExtResource("8_d3jkd")]
+position = Vector2(72, -25)
+scale = Vector2(1.65657, 1)
+
+[node name="Ramp" parent="Obstacles/trampoline" instance=ExtResource("10_u3awl")]
+position = Vector2(-329, -25)
+
+[node name="Square Obstacle" parent="Obstacles/trampoline" instance=ExtResource("7_ejswk")]
+position = Vector2(332, -66)
+scale = Vector2(0.48, 2.76)
+
+[node name="Square Obstacle" parent="Obstacles/trampoline/Square Obstacle" instance=ExtResource("7_ejswk")]
+position = Vector2(581.25, -55.4348)
+scale = Vector2(1.28256, -1.51735)
+
+[node name="Trampoline2" parent="Obstacles/trampoline" instance=ExtResource("8_d3jkd")]
+position = Vector2(363, -239)
+
+[node name="Node2D" type="Node2D" parent="Obstacles"]
+position = Vector2(1321, 0)
+
+[node name="Circle Obstacle" parent="Obstacles/Node2D" instance=ExtResource("6_ejswk")]
+position = Vector2(-489, 36)
+scale = Vector2(1.62667, 2.45918)
+
+[node name="Circle Obstacle2" parent="Obstacles/Node2D" instance=ExtResource("6_ejswk")]
+position = Vector2(-177, 8)
+scale = Vector2(1.38413, 2.74586)
+
+[node name="Triangle Obstacle" parent="Obstacles/Node2D" instance=ExtResource("6_6sh32")]
+position = Vector2(63, -139)
+scale = Vector2(1.0178, 1.07256)
+
+[node name="Circle Obstacle3" parent="Obstacles/Node2D" instance=ExtResource("6_ejswk")]
+position = Vector2(302, 36)
+scale = Vector2(1.32722, 2.61714)
+
+[node name="Triangle Obstacle2" parent="Obstacles/Node2D" instance=ExtResource("6_6sh32")]
+position = Vector2(708, -46)
 
 [node name="MissileStorage" type="Node2D" parent="."]
 
 [node name="Bunker" parent="." instance=ExtResource("8_bbk5w")]
-position = Vector2(10693, 887)
+position = Vector2(11574, 511)
+scale = Vector2(2.24072, 1.59907)
+
+[node name="ShortsAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_u3awl")
+volume_db = -13.071
+autoplay = true
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -102.0
+offset_top = 321.0
+offset_right = 321.0
+offset_bottom = 371.0
+theme_override_fonts/font = ExtResource("12_2ku1j")
+theme_override_font_sizes/font_size = 50
+text = "Mash A or D if you fall"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -398.0
+offset_top = 196.0
+offset_right = -51.0
+offset_bottom = 246.0
+theme_override_fonts/font = ExtResource("12_2ku1j")
+theme_override_font_sizes/font_size = 50
+text = "A & D to move"
 
 [connection signal="timeout" from="Timer" to="." method="_on_missile_timer_timeout"]

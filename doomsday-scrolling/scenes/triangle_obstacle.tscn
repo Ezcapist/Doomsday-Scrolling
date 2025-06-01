@@ -5,9 +5,9 @@
 [node name="Triangle Obstacle" type="StaticBody2D"]
 collision_layer = 4
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-395, 108, 396, 108, 0, -108)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.53991, 0.138002)
 texture = ExtResource("1_h7uwm")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-395, 108, 396, 108, 0, -108)
